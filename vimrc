@@ -417,7 +417,6 @@ set tags=tags;/,~/.vim/mytags/pear/tags
 " => Powerline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:Powerline_symbols = 'fancy'
-let g:Powerline_cache_enabled = 0
 
 " reload when writing to .vimrc
 autocmd! bufwritepost .vimrc call Pl#Load()
