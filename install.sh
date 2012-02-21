@@ -3,14 +3,27 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # link vimrc to home
-rm ~/.vimrc
+if [ -L ~/.vimrc ]
+then
+  unlink ~/.vimrc
+else
+  rm ~/.vimrc
+fi
 ln -s $DIR/vimrc ~/.vimrc
+
+# clone vundle
+if [ ! -d $DIR/bundle/vundle ]
+then
+  git clone https://github.com/gmarik/vundle.git $DIR/bundle/vundle
+fi
 
 # create temp file
 sed -n '/VUNDLE_INSTALL_START/,/VUNDLE_INSTALL_END/p' vimrc > $DIR/tempfile
 
-# clone vundle
-git clone https://github.com/gmarik/vundle.git $DIR/bundle/vundle
-
 # run vim
-vim -u tempfile +BundleInstall +qa
+vim -u $DIR/tempfile +BundleInstall +qa
+
+# delete temp file
+rm $DIR/tempfile
+
+echo 'All done!'
