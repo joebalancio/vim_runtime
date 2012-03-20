@@ -153,6 +153,9 @@ set si "Smart indet
 
 set showtabline=0 
 
+" Prevent commenting on next line
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
