@@ -31,6 +31,7 @@ Bundle 'fugitive.vim'
 Bundle 'phpcodesniffer.vim'
 Bundle 'checksyntax-B'
 Bundle 'vim-addon-xdebug'
+Bundle 'The-NERD-tree'
 
 " VUNDLE_INSTALL_END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
