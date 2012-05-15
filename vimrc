@@ -61,6 +61,7 @@ map <leader>e :e! ~/.vimrc<cr>
 autocmd! bufwritepost .vimrc source ~/.vimrc
 
 set wildignore+=*/.git/*
+set wildignore+=*/.hg/*
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -152,9 +153,6 @@ set ai "Auto indent
 set si "Smart indet
 
 set showtabline=0 
-
-" Prevent commenting on next line
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 
 """"""""""""""""""""""""""""""
@@ -395,10 +393,12 @@ function! JavaScriptFold()
     setl foldtext=FoldText()
 endfunction
 
+au FileType javascript setl nofoldenable
+
 """"""""""""""""""""""""""""""
 " => Vim grep
 """"""""""""""""""""""""""""""
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn .git generated'
+let Grep_Skip_Dirs = 'RCS CVS SCCS .svn .git .hg generated'
 set grepprg=/bin/grep\ -nH
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -444,4 +444,54 @@ map <leader>p :cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Exuberant CTags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:Tlist_Ctags_Cmd = '/opt/local/bin/ctags'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NERD Tree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDTreeMapJumpNextSibling = '<right>'
+let g:NERDTreeMapJumpPrevSibling = '<left>'
+map <leader>\ :NERDTreeToggle<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Source Local VIMRC
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! GitRoot()
+  try
+    let gitroot = system("git rev-parse --show-toplevel 2>/dev/null | tr -d '\n'")
+  catch
+    return ''
+  endtry
+
+  return gitroot
+endfunction
+
+function! HgRoot()
+  try
+    let hgroot = system("hg root 2>/dev/null | tr -d '\n'")
+  catch
+    return ''
+  endtry
+
+  return hgroot
+endfunction
+
+function! SourceLocalVimrc()
+  " Try GIT
+  let root = GitRoot()
+
+  if strlen(root) && filereadable(root . '/.vimrc')
+    execute "source " . fnameescape(root) . '/.vimrc'
+    return
+  endif
+
+  " Try HG
+  let root = HgRoot()
+
+  if strlen(root) && filereadable(root . '/.vimrc')
+    execute "source " . fnameescape(root) . '/.vimrc'
+    return
+  endif
+endfunction
+
+call SourceLocalVimrc()
+
