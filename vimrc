@@ -32,6 +32,8 @@ Bundle 'phpcodesniffer.vim'
 Bundle 'checksyntax-B'
 Bundle 'vim-addon-xdebug'
 Bundle 'The-NERD-tree'
+Bundle 'xmledit'
+Bundle 'groenewege/vim-less'
 
 " VUNDLE_INSTALL_END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -153,6 +155,9 @@ set ai "Auto indent
 set si "Smart indet
 
 set showtabline=0 
+
+" remove trailing spaces from c, cpp, java, php, js
+autocmd FileType c,cpp,java,php,javascript autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 
 """"""""""""""""""""""""""""""
@@ -495,3 +500,9 @@ endfunction
 
 call SourceLocalVimrc()
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Source Local VIMRC
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set mouse=a
+set ttymouse=xterm2
