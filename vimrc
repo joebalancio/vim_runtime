@@ -159,6 +159,12 @@ set showtabline=0
 " remove trailing spaces from c, cpp, java, php, js
 autocmd FileType c,cpp,java,php,javascript autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+autocmd FileType html,javascript set shiftwidth=2
+autocmd FileType html,javascript set tabstop=2
+
+autocmd FileType php set shiftwidth=4
+autocmd FileType php set tabstop=4
+
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -502,7 +508,7 @@ call SourceLocalVimrc()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Source Local VIMRC
+" => Mouse
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set mouse=a
 set ttymouse=xterm2
