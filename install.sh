@@ -11,6 +11,15 @@ else
 fi
 ln -s $DIR/vimrc ~/.vimrc
 
+# link vim_runtime to home
+if [ -L ~/.vim ]
+then
+  unlink ~/.vim
+else
+  rm ~/.vim
+fi
+ln -s $DIR ~/.vim
+
 # clone vundle
 if [ ! -d $DIR/bundle/vundle ]
 then
