@@ -34,6 +34,7 @@ Bundle 'vim-addon-xdebug'
 Bundle 'The-NERD-tree'
 Bundle 'xmledit'
 Bundle 'groenewege/vim-less'
+Bundle 'vim-coffee-script'
 
 " VUNDLE_INSTALL_END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -405,6 +406,7 @@ function! JavaScriptFold()
 endfunction
 
 au FileType javascript setl nofoldenable
+au BufRead,BufNewFile *.json set filetype=javascript
 
 """"""""""""""""""""""""""""""
 " => Vim grep
