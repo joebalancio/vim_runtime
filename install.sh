@@ -27,7 +27,7 @@ then
 fi
 
 # create temp file
-sed -n '/VUNDLE_INSTALL_START/,/VUNDLE_INSTALL_END/p' vimrc > $DIR/tempfile
+sed -n '/VUNDLE_INSTALL_START/,/VUNDLE_INSTALL_END/p' $DIR/vimrc > $DIR/tempfile
 
 # run vim
 vim -u $DIR/tempfile +BundleInstall +qa
