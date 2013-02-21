@@ -40,3 +40,6 @@
 [submodule "bundle/xmledit"]
 	path = bundle/xmledit
 	url = https://github.com/vim-scripts/xmledit.git
+[submodule "bundle/editorconfig-vim"]
+	path = bundle/editorconfig-vim
+	url = git://github.com/editorconfig/editorconfig-vim.git
