@@ -21,7 +21,7 @@ fi
 ln -s $DIR ~/.vim
 
 # clone vundle
-if [ ! -d $DIR/bundle/vundle ]
+if [ ! -d $DIR/bundle/vundle/.git ]
 then
   git clone https://github.com/gmarik/vundle.git $DIR/bundle/vundle
 fi
