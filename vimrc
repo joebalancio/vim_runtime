@@ -2,6 +2,7 @@
 " => Initialize
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set runtimepath=~/.vim,$VIMRUNTIME
+set rtp+=~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle
@@ -18,13 +19,14 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " my list
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/vim-powerline'
 Bundle 'kien/ctrlp.vim'
 Bundle 'AutoTag'
 Bundle 'surround.vim'
 "Bundle 'phpcomplete.vim'
 Bundle 'ctags.vim'
 Bundle 'peaksea'
+Bundle 'Solarized'
 "Bundle 'php.vim-for-php5'
 Bundle 'minibufexpl.vim'
 Bundle 'fugitive.vim'
@@ -110,7 +112,7 @@ syntax enable "Enable syntax hl
 
 set t_Co=256
 set background=dark
-colorscheme joe
+colorscheme peaksea "solarized
 set nonumber
 
 set encoding=utf8
@@ -158,14 +160,13 @@ set si "Smart indet
 set showtabline=0 
 
 " remove trailing spaces from c, cpp, java, php, js
-autocmd FileType c,cpp,java,php,javascript autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,java,php,javascript,coffee,less,html autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 autocmd FileType html,javascript set shiftwidth=2
 autocmd FileType html,javascript set tabstop=2
 
 autocmd FileType php set shiftwidth=4
 autocmd FileType php set tabstop=4
-
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -438,13 +439,13 @@ let g:ctrlp_open_multi = 'hr'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Powerline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:Powerline_symbols = 'fancy'
-
-" reload when writing to .vimrc
-autocmd! bufwritepost .vimrc call Pl#Load()
-
-
-call Pl#Theme#InsertSegment('charcode', 'after', 'filetypes')
+"let g:Powerline_symbols = 'fancy'
+"
+"" reload when writing to .vimrc
+"autocmd! bufwritepost .vimrc call Pl#Load()
+"
+"
+"call Pl#Theme#InsertSegment('charcode', 'after', 'filetypes')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Cope
