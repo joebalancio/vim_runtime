@@ -43,6 +43,7 @@ Bundle 'xmledit'
 Bundle 'groenewege/vim-less'
 Bundle 'vim-coffee-script'
 Bundle 'Syntastic'
+Bundle 'ack.vim'
 
 " VUNDLE_INSTALL_END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -67,9 +68,6 @@ nmap <leader>w :w!<cr>
 
 " Fast editing of the .vimrc
 map <leader>e :e! ~/.vimrc<cr>
-
-" When vimrc is edited, reload it
-autocmd! bufwritepost .vimrc source ~/.vimrc
 
 set wildignore+=*/.git/*
 set wildignore+=*/.hg/*
@@ -98,7 +96,7 @@ set smartcase
 set hlsearch "Highlight search things
 
 set incsearch "Make search act like search in modern browsers
-set nolazyredraw "Don't redraw while executing macros 
+set nolazyredraw "Don't redraw while executing macros
 
 set magic "Set magic on, for regular expressions
 
@@ -124,7 +122,7 @@ set background=dark
 "colorscheme badwolf
 colorscheme jellybeans
 "colorscheme wombat
-set nonumber
+set number
 
 set encoding=utf8
 try
@@ -168,7 +166,7 @@ let &showbreak = '> '
 set ai "Auto indent
 set si "Smart indet
 
-set showtabline=0 
+set showtabline=0
 
 " remove trailing spaces from c, cpp, java, php, js
 autocmd FileType c,cpp,java,php,javascript,coffee,less,html autocmd BufWritePre <buffer> :%s/\s\+$//e
@@ -200,12 +198,12 @@ vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 
 "
 " From an idea by Michael Naumann
-" 
+"
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
-endfunction 
+endfunction
 
 function! VisualSelection(direction) range
     let l:saved_reg = @"
@@ -222,6 +220,8 @@ function! VisualSelection(direction) range
         call CmdLine("%s" . '/'. l:pattern . '/')
     elseif a:direction == 'f'
         execute "normal /" . l:pattern . "^M"
+    elseif a:direction == 'search_files'
+        call CmdLine("Ack " . @")
     endif
 
     let @/ = l:pattern
@@ -243,7 +243,7 @@ cno $q <C-\>eDeleteTillSlash()<cr>
 
 func! Cwd()
   let cwd = getcwd()
-  return "e " . cwd 
+  return "e " . cwd
 endfunc
 
 func! DeleteTillSlash()
@@ -251,7 +251,7 @@ func! DeleteTillSlash()
     let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*", "\\1", "")
   if g:cmd == g:cmd_edited
       let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*/", "\\1", "")
-  endif   
+  endif
   return g:cmd_edited
 endfunc
 
@@ -290,9 +290,9 @@ map <left> :bp<cr>
 
 " Tab configuration
 map <leader>tn :tabnew! %<cr>
-map <leader>te :tabedit 
+map <leader>te :tabedit
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
+map <leader>tm :tabmove
 
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>
@@ -318,7 +318,7 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 set switchbuf=useopen
 
 " Return to last edit position (You want this!) *N*
@@ -403,10 +403,10 @@ au FileType javascript setl nocindent
 au FileType javascript imap <c-t> AJS.log();<esc>hi
 au FileType javascript imap <c-a> alert();<esc>hi
 
-au FileType javascript inoremap <buffer> $r return 
+au FileType javascript inoremap <buffer> $r return
 au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
 
-function! JavaScriptFold() 
+function! JavaScriptFold()
     setl foldmethod=syntax
     setl foldlevelstart=1
     syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
@@ -527,3 +527,8 @@ map <leader>t :e! ~/.tmux.conf<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'badwolf'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Ack
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+vnoremap <silent> <leader>s :call VisualSelection('search_files')<CR>
