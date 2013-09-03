@@ -19,7 +19,12 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " my list
-"Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
+Bundle 'badwolf'
+Bundle 'jellybeans.vim'
+Bundle 'molokai'
+Bundle 'Solarized'
+Bundle 'Wombat'
 Bundle 'kien/ctrlp.vim'
 Bundle 'AutoTag'
 Bundle 'surround.vim'
@@ -37,6 +42,7 @@ Bundle 'The-NERD-tree'
 Bundle 'xmledit'
 Bundle 'groenewege/vim-less'
 Bundle 'vim-coffee-script'
+Bundle 'Syntastic'
 
 " VUNDLE_INSTALL_END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -112,7 +118,12 @@ syntax enable "Enable syntax hl
 
 set t_Co=256
 set background=dark
-colorscheme peaksea "solarized
+"colorscheme joe
+"colorscheme solarized
+"colorscheme molokai
+"colorscheme badwolf
+colorscheme jellybeans
+"colorscheme wombat
 set nonumber
 
 set encoding=utf8
@@ -437,17 +448,6 @@ set tags=tags;/,~/.vim/mytags/pear/tags
 let g:ctrlp_open_multi = 'hr'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Powerline
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:Powerline_symbols = 'fancy'
-"
-"" reload when writing to .vimrc
-"autocmd! bufwritepost .vimrc call Pl#Load()
-"
-"
-"call Pl#Theme#InsertSegment('charcode', 'after', 'filetypes')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Cope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Do :help cope if you are unsure what cope is. It's super useful!
@@ -521,3 +521,9 @@ set ttymouse=xterm2
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Fast editing of the .tmux.conf
 map <leader>t :e! ~/.tmux.conf<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'badwolf'
