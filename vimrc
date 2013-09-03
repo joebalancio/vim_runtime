@@ -168,8 +168,11 @@ set si "Smart indet
 
 set showtabline=0
 
+" Show a line at 80 characters to assist with wrapping
+set colorcolumn=80
+
 " remove trailing spaces from c, cpp, java, php, js
-autocmd FileType c,cpp,java,php,javascript,coffee,less,html autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType c,cpp,java,php,javascript,coffee,less,html,scala autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 autocmd FileType html,javascript set shiftwidth=2
 autocmd FileType html,javascript set tabstop=2
