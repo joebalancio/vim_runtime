@@ -4,46 +4,86 @@
 set runtimepath=~/.vim,$VIMRUNTIME
 set rtp+=~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NeoBundle
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'badwolf'
+NeoBundle 'jellybeans.vim'
+NeoBundle 'molokai'
+NeoBundle 'Solarized'
+NeoBundle 'Wombat'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'surround.vim'
+NeoBundle 'peaksea'
+NeoBundle 'Solarized'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'The-NERD-tree'
+NeoBundle 'xmledit'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'vim-coffee-script'
+"NeoBundle 'Syntastic'
+NeoBundle 'ack.vim'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'bufexplorer.zip'
+NeoBundle 'Shougo/unite.vim'
+
+NeoBundleCheck
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" VUNDLE_INSTALL_START
-set nocompatible
-filetype off  " required!
-
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-
-" Bundles
-" required!
-Bundle 'gmarik/vundle'
-
-" my list
-Bundle 'bling/vim-airline'
-Bundle 'badwolf'
-Bundle 'jellybeans.vim'
-Bundle 'molokai'
-Bundle 'Solarized'
-Bundle 'Wombat'
-Bundle 'kien/ctrlp.vim'
-Bundle 'AutoTag'
-Bundle 'surround.vim'
-"Bundle 'phpcomplete.vim'
-Bundle 'ctags.vim'
-Bundle 'peaksea'
-Bundle 'Solarized'
-"Bundle 'php.vim-for-php5'
-Bundle 'minibufexpl.vim'
-Bundle 'fugitive.vim'
-"Bundle 'phpcodesniffer.vim'
-Bundle 'checksyntax-B'
-"Bundle 'vim-addon-xdebug'
-Bundle 'The-NERD-tree'
-Bundle 'xmledit'
-Bundle 'groenewege/vim-less'
-Bundle 'vim-coffee-script'
-Bundle 'Syntastic'
-Bundle 'ack.vim'
+"" VUNDLE_INSTALL_START
+"set nocompatible
+"filetype off  " required!
+"
+"set rtp+=~/.vim/bundle/vundle
+"call vundle#rc()
+"
+"" Bundles
+"" required!
+"Bundle 'gmarik/vundle'
+"
+"" my list
+"Bundle 'bling/vim-airline'
+"Bundle 'badwolf'
+"Bundle 'jellybeans.vim'
+"Bundle 'molokai'
+"Bundle 'Solarized'
+"Bundle 'Wombat'
+"Bundle 'kien/ctrlp.vim'
+""Bundle 'AutoTag'
+"Bundle 'surround.vim'
+""Bundle 'phpcomplete.vim'
+""Bundle 'ctags.vim'
+"Bundle 'peaksea'
+"Bundle 'Solarized'
+""Bundle 'php.vim-for-php5'
+""Bundle 'minibufexpl.vim'
+"Bundle 'fugitive.vim'
+""Bundle 'phpcodesniffer.vim'
+""Bundle 'checksyntax-B'
+""Bundle 'vim-addon-xdebug'
+"Bundle 'The-NERD-tree'
+"Bundle 'xmledit'
+"Bundle 'groenewege/vim-less'
+"Bundle 'vim-coffee-script'
+"Bundle 'Syntastic'
+"Bundle 'ack.vim'
+"Bundle 'airblade/vim-gitgutter'
+"Bundle 'bufexplorer.zip'
 
 " VUNDLE_INSTALL_END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -54,6 +94,10 @@ set history=700
 
 " Enable filetype plugin
 filetype plugin indent on
+
+" Enable modeline
+set modeline
+set modelines=2
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -69,8 +113,8 @@ nmap <leader>w :w!<cr>
 " Fast editing of the .vimrc
 map <leader>e :e! ~/.vimrc<cr>
 
-set wildignore+=*/.git/*
-set wildignore+=*/.hg/*
+"set wildignore+=*/.git/*
+"set wildignore+=*/.hg/*
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -168,8 +212,8 @@ set si "Smart indet
 
 set showtabline=0
 
-" Show a line at 80 characters to assist with wrapping
-set colorcolumn=80
+" Show a line at 120 characters to assist with wrapping
+set colorcolumn=120
 
 " remove trailing spaces from c, cpp, java, php, js
 autocmd FileType c,cpp,java,php,javascript,coffee,less,html,scala autocmd BufWritePre <buffer> :%s/\s\+$//e
@@ -179,6 +223,13 @@ autocmd FileType html,javascript set tabstop=2
 
 autocmd FileType php set shiftwidth=4
 autocmd FileType php set tabstop=4
+
+autocmd BufNewFile,BufRead *.fmt set filetype=html
+
+" Yank to system clipboard
+"vnoremap <silent> <leader>y :call VisualSelection('yank')<CR>
+"vnoremap <silent> <leader>y :'<,'>w !pbcopy<CR><CR>
+vnoremap <silent> <leader>y :w !pbcopy<CR><CR>
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -225,6 +276,8 @@ function! VisualSelection(direction) range
         execute "normal /" . l:pattern . "^M"
     elseif a:direction == 'search_files'
         call CmdLine("Ack " . @")
+    elseif a:direction == 'yank'
+        call CmdLine("w !pbcopy<CR>")
     endif
 
     let @/ = l:pattern
@@ -271,8 +324,8 @@ endfunc
 "map k gk
 
 " Map space to / (search) and c-space to ? (backgwards search)
-map <space> /
-map <c-space> ?
+"map <space> /
+"map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move btw. windows
@@ -379,15 +432,15 @@ map 0 ^
 """"""""""""""""""""""""""""""
 " => Minibuffer plugin
 """"""""""""""""""""""""""""""
-let g:miniBufExplModSelTarget = 1
-let g:miniBufExplUseSingleClick = 1
-"let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplVSplit = 30
-let g:miniBufExplSplitBelow=1
-
-autocmd BufRead,BufNew :call UMiniBufExplorer
-
-map <leader>u :TMiniBufExplorer<cr>
+"let g:miniBufExplModSelTarget = 1
+"let g:miniBufExplUseSingleClick = 1
+""let g:miniBufExplMapWindowNavVim = 1
+"let g:miniBufExplVSplit = 30
+"let g:miniBufExplSplitBelow=1
+"
+"autocmd BufRead,BufNew :call UMiniBufExplorer
+"
+"map <leader>u :TMiniBufExplorer<cr>
 
 
 
@@ -449,6 +502,9 @@ set tags=tags;/,~/.vim/mytags/pear/tags
 " => CtrlP
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_open_multi = 'hr'
+let g:ctrlp_custom_ignore = {
+  \ 'dir': '\/target\/'
+  \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Cope
@@ -468,6 +524,7 @@ map <leader>p :cp<cr>
 let g:NERDTreeMapJumpNextSibling = '<right>'
 let g:NERDTreeMapJumpPrevSibling = '<left>'
 map <leader>\ :NERDTreeToggle<cr>
+map <leader>] :NERDTreeFind<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local VIMRC
@@ -535,3 +592,19 @@ let g:airline_theme = 'badwolf'
 " => Ack
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 vnoremap <silent> <leader>s :call VisualSelection('search_files')<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Unite
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+nmap <space> [unite]
+nnoremap [unite] <nop>
+nnoremap <silent> [unite]<space> :<C-u>Unite -toggle -auto-resize -buffer-name=mixed file_rec/async buffer file_mru bookmark<cr><c-u>
+nnoremap <silent> [unite]f :<C-u>Unite -toggle -auto-resize -buffer-name=files file_rec/async<cr><c-u>
+nnoremap <silent> [unite]y :<C-u>Unite -buffer-name=yanks history/yank<cr>
+nnoremap <silent> [unite]l :<C-u>Unite -auto-resize -buffer-name=line line<cr>
+nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<cr>
+nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
+nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
+nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
