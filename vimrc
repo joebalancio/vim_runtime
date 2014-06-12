@@ -18,7 +18,16 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/vimproc'
+let vimproc_updcmd = has('win64') ?
+      \ 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
+execute "NeoBundle 'Shougo/vimproc.vim'," . string({
+      \ 'build' : {
+      \     'windows' : vimproc_updcmd,
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ })
 NeoBundle 'bling/vim-airline'
 NeoBundle 'badwolf'
 NeoBundle 'jellybeans.vim'
@@ -42,50 +51,6 @@ NeoBundle 'Shougo/unite.vim'
 
 NeoBundleCheck
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vundle
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"" VUNDLE_INSTALL_START
-"set nocompatible
-"filetype off  " required!
-"
-"set rtp+=~/.vim/bundle/vundle
-"call vundle#rc()
-"
-"" Bundles
-"" required!
-"Bundle 'gmarik/vundle'
-"
-"" my list
-"Bundle 'bling/vim-airline'
-"Bundle 'badwolf'
-"Bundle 'jellybeans.vim'
-"Bundle 'molokai'
-"Bundle 'Solarized'
-"Bundle 'Wombat'
-"Bundle 'kien/ctrlp.vim'
-""Bundle 'AutoTag'
-"Bundle 'surround.vim'
-""Bundle 'phpcomplete.vim'
-""Bundle 'ctags.vim'
-"Bundle 'peaksea'
-"Bundle 'Solarized'
-""Bundle 'php.vim-for-php5'
-""Bundle 'minibufexpl.vim'
-"Bundle 'fugitive.vim'
-""Bundle 'phpcodesniffer.vim'
-""Bundle 'checksyntax-B'
-""Bundle 'vim-addon-xdebug'
-"Bundle 'The-NERD-tree'
-"Bundle 'xmledit'
-"Bundle 'groenewege/vim-less'
-"Bundle 'vim-coffee-script'
-"Bundle 'Syntastic'
-"Bundle 'ack.vim'
-"Bundle 'airblade/vim-gitgutter'
-"Bundle 'bufexplorer.zip'
-
-" VUNDLE_INSTALL_END
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

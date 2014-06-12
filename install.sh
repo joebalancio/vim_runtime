@@ -20,19 +20,13 @@ else
 fi
 ln -s $DIR ~/.vim
 
-# clone vundle
-if [ ! -d $DIR/bundle/vundle ]
+# clone neobundle
+if [ ! -d $DIR/bundle/neobundle.vim ]
 then
-  git clone https://github.com/gmarik/vundle.git $DIR/bundle/vundle
+  git clone https://github.com/Shougo/neobundle.vim $DIR/bundle/neobundle.vim
 fi
 
-# create temp file
-sed -n '/VUNDLE_INSTALL_START/,/VUNDLE_INSTALL_END/p' $DIR/vimrc > $DIR/tempfile
-
 # run vim
-vim -u $DIR/tempfile +BundleInstall +qa
-
-# delete temp file
-rm $DIR/tempfile
+vim +NeoBundleInstall +qa
 
 echo 'All done!'
