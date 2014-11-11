@@ -13,7 +13,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -50,6 +50,8 @@ NeoBundle 'bufexplorer.zip'
 NeoBundle 'Shougo/unite.vim'
 
 NeoBundleCheck
+
+call neobundle#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
