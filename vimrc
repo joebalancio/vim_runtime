@@ -43,11 +43,18 @@ NeoBundle 'The-NERD-tree'
 NeoBundle 'xmledit'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'vim-coffee-script'
-"NeoBundle 'Syntastic'
+NeoBundle 'Syntastic'
 NeoBundle 'ack.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bufexplorer.zip'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'localvimrc'
+NeoBundle 'Chiel92/vim-autoformat'
+"NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'JulesWang/css.vim'
+NeoBundle 'cakebaker/scss-syntax.vim'
 
 NeoBundleCheck
 
@@ -64,7 +71,7 @@ filetype plugin indent on
 
 " Enable modeline
 set modeline
-set modelines=2
+set modelines=3
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -78,10 +85,10 @@ let g:mapleader = ","
 nmap <leader>w :w!<cr>
 
 " Fast editing of the .vimrc
-map <leader>e :e! ~/.vimrc<cr>
+map <leader>rc :e! ~/.vimrc<cr>
 
-"set wildignore+=*/.git/*
-"set wildignore+=*/.hg/*
+set wildignore+=*/.git/*
+set wildignore+=*/.hg/*
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -185,8 +192,13 @@ set colorcolumn=120
 " remove trailing spaces from c, cpp, java, php, js
 autocmd FileType c,cpp,java,php,javascript,coffee,less,html,scala autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-autocmd FileType html,javascript set shiftwidth=2
-autocmd FileType html,javascript set tabstop=2
+" Autoformat
+"autocmd FileType javascript autocmd BufWritePre <buffer> Autoformat
+
+autocmd FileType html,javascript set shiftwidth=4
+autocmd FileType html,javascript set tabstop=4
+autocmd FileType css,scss set shiftwidth=2
+autocmd FileType css,scss set tabstop=2
 
 autocmd FileType php set shiftwidth=4
 autocmd FileType php set tabstop=4
@@ -354,6 +366,27 @@ set switchbuf=useopen
 "Remeber open buffers on close
 "set viminfo^=%
 
+" http://stackoverflow.com/questions/1534835/how-do-i-close-all-buffers-that-arent-shown-in-a-window-in-vim
+function! DeleteInactiveBufs()
+    "From tabpagebuflist() help, get a list of all buffers in all tabs
+    let tablist = []
+    for i in range(tabpagenr('$'))
+        call extend(tablist, tabpagebuflist(i + 1))
+    endfor
+
+    "Below originally inspired by Hara Krishna Dara and Keith Roberts
+    "http://tech.groups.yahoo.com/group/vim/message/56425
+    let nWipeouts = 0
+    for i in range(1, bufnr('$'))
+        if bufexists(i) && !getbufvar(i,"&mod") && index(tablist, i) == -1
+        "bufno exists AND isn't modified AND isn't in the list of buffers open in windows and tabs
+            silent exec 'bwipeout' i
+            let nWipeouts = nWipeouts + 1
+        endif
+    endfor
+    echomsg nWipeouts . ' buffer(s) wiped out'
+endfunction
+command! Bdi :call DeleteInactiveBufs()
 
 """"""""""""""""""""""""""""""
 " => Statusline
@@ -470,8 +503,15 @@ set tags=tags;/,~/.vim/mytags/pear/tags
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_open_multi = 'hr'
 let g:ctrlp_custom_ignore = {
-  \ 'dir': '\/target\/'
+  \ 'dir': '\v[\/](node_modules|components|bower_components|vms)|(\.(git|hg|svn))$'
   \ }
+let g:ctrlp_max_files = 0
+let g:ctrlp_max_depth = 40
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_lazy_update = 250
+
+nmap ff :CtrlPMixed<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Cope
@@ -480,6 +520,15 @@ let g:ctrlp_custom_ignore = {
 map <leader>cc :botright cope<cr>
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Do :help cope if you are unsure what cope is. It's super useful!
+map <leader>e :Errors<cr>
+map <leader>j :lnext<cr>
+map <leader>k :lprev<cr>
+let g:syntastic_always_populate_loc_list = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Exuberant CTags
@@ -496,46 +545,7 @@ map <leader>] :NERDTreeFind<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Source Local VIMRC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! GitRoot()
-  try
-    let gitroot = system("git rev-parse --show-toplevel 2>/dev/null | tr -d '\n'")
-  catch
-    return ''
-  endtry
-
-  return gitroot
-endfunction
-
-function! HgRoot()
-  try
-    let hgroot = system("hg root 2>/dev/null | tr -d '\n'")
-  catch
-    return ''
-  endtry
-
-  return hgroot
-endfunction
-
-function! SourceLocalVimrc()
-  " Try GIT
-  let root = GitRoot()
-
-  if strlen(root) && filereadable(root . '/.vimrc')
-    execute "source " . fnameescape(root) . '/.vimrc'
-    return
-  endif
-
-  " Try HG
-  let root = HgRoot()
-
-  if strlen(root) && filereadable(root . '/.vimrc')
-    execute "source " . fnameescape(root) . '/.vimrc'
-    return
-  endif
-endfunction
-
-call SourceLocalVimrc()
-
+let g:localvimrc_ask = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mouse
@@ -575,3 +585,19 @@ nnoremap <silent> [unite]b :<C-u>Unite -auto-resize -buffer-name=buffers buffer<
 nnoremap <silent> [unite]/ :<C-u>Unite -no-quit -buffer-name=search grep:.<cr>
 nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mapping<cr>
 nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim Autoformat
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:formatprg_args_javascript = "-f -"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim Git Gutter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:gitgutter_max_signs=1000
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Tagbar
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Make sure jsctags is installed: npm i -g jsctags
+nmap tt :Tagbar<cr>
