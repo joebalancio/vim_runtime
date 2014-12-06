@@ -55,6 +55,8 @@ NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'JulesWang/css.vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
+NeoBundle 'puppetlabs/puppet-syntax-vim'
+NeoBundle 'mintplant/vim-literate-coffeescript'
 
 NeoBundleCheck
 
