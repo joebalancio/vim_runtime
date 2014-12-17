@@ -599,6 +599,8 @@ let g:formatprg_args_javascript = "-f -"
 " => Vim Git Gutter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_max_signs=1000
+nmap [h <Plug>GitGutterPrevHunk
+nmap ]h <Plug>GitGutterNextHunk
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Tagbar
