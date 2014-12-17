@@ -567,6 +567,7 @@ map <leader>t :e! ~/.tmux.conf<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'badwolf'
+let g:airline_inactive_collapse = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack
