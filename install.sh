@@ -29,4 +29,6 @@ fi
 # run vim
 vim +NeoBundleInstall +qa
 
+./$DIR/bundle/YouCompleteMe/install.sh
+
 echo 'All done!'
