@@ -50,12 +50,16 @@ NeoBundle 'bufexplorer.zip'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'localvimrc'
 NeoBundle 'Chiel92/vim-autoformat'
+"NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'editorconfig/editorconfig-vim'
+"NeoBundle 'majutsushi/tagbar'
 NeoBundle 'JulesWang/css.vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'puppetlabs/puppet-syntax-vim'
 NeoBundle 'mintplant/vim-literate-coffeescript'
 NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'gcmt/taboo.vim'
 
 NeoBundleCheck
 
@@ -613,3 +617,11 @@ nmap ]h <Plug>GitGutterNextHunk
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Make sure jsctags is installed: npm i -g jsctags
 nmap tt :Tagbar<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Tabular
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
