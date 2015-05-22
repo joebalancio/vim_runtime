@@ -566,6 +566,14 @@ map <leader>t :e! ~/.tmux.conf<cr>
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'badwolf'
 let g:airline_inactive_collapse = 0
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'b': 100,
+    \ 'x': 120,
+    \ 'y': 120,
+    \ 'z': 100,
+    \ 'warning': 80,
+    \ }
+let g:airline#extensions#tabline#enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack
