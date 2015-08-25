@@ -182,9 +182,11 @@ set smarttab
 
 set wrap "Wrap lines
 set linebreak
-set nolist
+set list
 set textwidth=0
 let &showbreak = '> '
+
+set listchars=trail:·,eol:$,tab:➪\ 
 
 set ai "Auto indent
 set si "Smart indet
