@@ -60,6 +60,7 @@ NeoBundle 'mintplant/vim-literate-coffeescript'
 NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'gcmt/taboo.vim'
+NeoBundle 'mxw/vim-jsx'
 
 NeoBundleCheck
 
