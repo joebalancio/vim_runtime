@@ -65,6 +65,13 @@ NeoBundleCheck
 call neobundle#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Local .vimrc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable(glob("~/.vimrc.local")) 
+  source ~/.vimrc.local
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
