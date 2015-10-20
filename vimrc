@@ -632,10 +632,3 @@ nmap ]h <Plug>GitGutterNextHunk
 " Make sure jsctags is installed: npm i -g jsctags
 nmap tt :Tagbar<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Tabular
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:\zs<CR>
-vmap <Leader>a: :Tabularize /:\zs<CR>
