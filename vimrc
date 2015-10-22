@@ -53,8 +53,6 @@ NeoBundle 'jaxbot/github-issues.vim'
 
 NeoBundleCheck
 
-NeoBundleCheck
-
 call neobundle#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
