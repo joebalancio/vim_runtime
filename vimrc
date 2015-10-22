@@ -29,15 +29,9 @@ execute "NeoBundle 'Shougo/vimproc.vim'," . string({
       \    },
       \ })
 NeoBundle 'bling/vim-airline'
-NeoBundle 'badwolf'
 NeoBundle 'jellybeans.vim'
-NeoBundle 'molokai'
-NeoBundle 'Solarized'
-NeoBundle 'Wombat'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'surround.vim'
-NeoBundle 'peaksea'
-NeoBundle 'Solarized'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'The-NERD-tree'
 NeoBundle 'xmledit'
