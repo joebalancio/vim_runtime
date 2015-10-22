@@ -153,6 +153,7 @@ catch
 endtry
 
 set fileformats=unix,dos,mac "Default file types
+set guifont=Source\ Code\ Pro\ for\ Powerline:h11
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
