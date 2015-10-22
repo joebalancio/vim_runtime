@@ -210,6 +210,7 @@ autocmd FileType css,scss set tabstop=2
 autocmd FileType php set shiftwidth=4
 autocmd FileType php set tabstop=4
 
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufRead *.fmt set filetype=html
 
 " Yank to system clipboard
