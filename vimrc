@@ -43,16 +43,15 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bufexplorer.zip'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'localvimrc'
-NeoBundle 'Chiel92/vim-autoformat'
-"NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'editorconfig/editorconfig-vim'
 "NeoBundle 'majutsushi/tagbar'
 NeoBundle 'JulesWang/css.vim'
 NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'puppetlabs/puppet-syntax-vim'
-NeoBundle 'mintplant/vim-literate-coffeescript'
 NeoBundle 'Valloric/YouCompleteMe'
-NeoBundle 'godlygeek/tabular'
+NeoBundle 'jaxbot/github-issues.vim'
+
+NeoBundleCheck
 
 NeoBundleCheck
 
