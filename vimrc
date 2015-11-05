@@ -50,6 +50,7 @@ NeoBundle 'cakebaker/scss-syntax.vim'
 NeoBundle 'puppetlabs/puppet-syntax-vim'
 NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'jaxbot/github-issues.vim'
+NeoBundle 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 
 NeoBundleCheck
 
