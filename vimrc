@@ -1,60 +1,49 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Initialize
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set runtimepath=~/.vim,$VIMRUNTIME
+set nocompatible " Required
+filetype off
+set rtp=~/.vim,$VIMRUNTIME
 set rtp+=~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
 
 if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/bundle/Vundle.vim/
 endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => NeoBundle
+" => Vundle
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+call vundle#begin(expand('~/.vim/bundle/'))
 
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+" Let NeoBundle manage itself
+Plugin 'VundleVim/Vundle.vim'
 
-let vimproc_updcmd = has('win64') ?
-      \ 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
-execute "NeoBundle 'Shougo/vimproc.vim'," . string({
-      \ 'build' : {
-      \     'windows' : vimproc_updcmd,
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ })
-NeoBundle 'bling/vim-airline'
-NeoBundle 'jellybeans.vim'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'surround.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'The-NERD-tree'
-NeoBundle 'xmledit'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'vim-coffee-script'
-NeoBundle 'Syntastic'
-NeoBundle 'ack.vim'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'bufexplorer.zip'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'localvimrc'
-NeoBundle 'editorconfig/editorconfig-vim'
-"NeoBundle 'majutsushi/tagbar'
-NeoBundle 'JulesWang/css.vim'
-NeoBundle 'cakebaker/scss-syntax.vim'
-NeoBundle 'puppetlabs/puppet-syntax-vim'
-NeoBundle 'Valloric/YouCompleteMe'
-NeoBundle 'jaxbot/github-issues.vim'
-NeoBundle 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+Plugin 'bling/vim-airline'
+Plugin 'jellybeans.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'surround.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'The-NERD-tree'
+Plugin 'xmledit'
+Plugin 'groenewege/vim-less'
+Plugin 'vim-coffee-script'
+Plugin 'Syntastic'
+Plugin 'ack.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'bufexplorer.zip'
+Plugin 'Shougo/unite.vim'
+Plugin 'localvimrc'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'JulesWang/css.vim'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'puppetlabs/puppet-syntax-vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'jaxbot/github-issues.vim'
+Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 
-NeoBundleCheck
-
-call neobundle#end()
+call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Local .vimrc
