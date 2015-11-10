@@ -21,14 +21,14 @@ fi
 ln -s $DIR ~/.vim
 
 # clone neobundle
-if [ ! -d $DIR/bundle/neobundle.vim ]
+if [ ! -d $DIR/bundle/Vundle.vim ]
 then
-  git clone https://github.com/Shougo/neobundle.vim $DIR/bundle/neobundle.vim
+  git clone https://github.com/VundleVim/Vundle.vim.git $DIR/bundle/Vundle.vim
 fi
 
 # run vim
-vim +NeoBundleInstall +qa
+vim -u $DIR/vimrc-vundle +PluginInstall +qall
 
-./$DIR/bundle/YouCompleteMe/install.sh
+$DIR/bundle/YouCompleteMe/install.sh
 
 echo 'All done!'
