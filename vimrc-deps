@@ -1,0 +1,46 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Initialize
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible " Required
+filetype off
+set rtp=~/.vim,$VIMRUNTIME
+set rtp+=~/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/Vundle.vim/
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vundle
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible
+
+call vundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage itself
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'bling/vim-airline'
+Plugin 'jellybeans.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'surround.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'The-NERD-tree'
+Plugin 'xmledit'
+Plugin 'groenewege/vim-less'
+Plugin 'vim-coffee-script'
+Plugin 'Syntastic'
+Plugin 'ack.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'bufexplorer.zip'
+Plugin 'Shougo/unite.vim'
+Plugin 'localvimrc'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'JulesWang/css.vim'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'puppetlabs/puppet-syntax-vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'jaxbot/github-issues.vim'
+Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+
+call vundle#end()
