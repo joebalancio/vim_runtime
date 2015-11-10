@@ -40,7 +40,6 @@ Plugin 'JulesWang/css.vim'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'puppetlabs/puppet-syntax-vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'jaxbot/github-issues.vim'
 Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 
 call vundle#end()
