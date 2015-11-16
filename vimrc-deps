@@ -21,7 +21,6 @@ call vundle#begin(expand('~/.vim/bundle/'))
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'bling/vim-airline'
-Plugin 'jellybeans.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'surround.vim'
 Plugin 'tpope/vim-fugitive'
@@ -41,5 +40,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'puppetlabs/puppet-syntax-vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
+Plugin 'pangloss/vim-javascript'
+Plugin 'chriskempson/base16-vim'
 
 call vundle#end()

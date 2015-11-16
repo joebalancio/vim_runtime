@@ -81,12 +81,7 @@ syntax enable "Enable syntax hl
 
 set t_Co=256
 set background=dark
-"colorscheme joe
-"colorscheme solarized
-"colorscheme molokai
-"colorscheme badwolf
-colorscheme jellybeans
-"colorscheme wombat
+colorscheme base16-default
 set number
 
 set encoding=utf8
@@ -136,8 +131,8 @@ set si "Smart indet
 
 set showtabline=0
 
-" Show a line at 120 characters to assist with wrapping
-set colorcolumn=120
+" Show a line at 100 characters to assist with wrapping
+set colorcolumn=100
 
 " remove trailing spaces from c, cpp, java, php, js
 autocmd FileType c,cpp,java,php,javascript,coffee,less,html,scala autocmd BufWritePre <buffer> :%s/\s\+$//e
