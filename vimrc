@@ -458,6 +458,8 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_lazy_update = 250
+let g:ctrlp_open_multiple_files = 'vjr'
+let g:ctrlp_working_path_mode = 'ra'
 
 nmap ff :CtrlPMixed<cr>
 
