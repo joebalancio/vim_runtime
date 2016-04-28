@@ -42,5 +42,6 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 Plugin 'pangloss/vim-javascript'
 Plugin 'chriskempson/base16-vim'
+Plugin 'elzr/vim-json'
 
 call vundle#end()
