@@ -44,5 +44,6 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'chriskempson/base16-vim'
 Plugin 'elzr/vim-json'
 Plugin 'scrooloose/nerdcommenter.git'
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()
