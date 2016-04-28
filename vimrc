@@ -424,7 +424,6 @@ function! JavaScriptFold()
 endfunction
 
 au FileType javascript setl nofoldenable
-au BufRead,BufNewFile *.json set filetype=javascript
 
 """"""""""""""""""""""""""""""
 " => Vim grep
