@@ -21,7 +21,7 @@ call vundle#begin(expand('~/.vim/bundle/'))
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'surround.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'The-NERD-tree'
