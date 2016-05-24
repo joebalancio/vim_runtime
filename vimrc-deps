@@ -20,7 +20,8 @@ call vundle#begin(expand('~/.vim/bundle/'))
 " Let NeoBundle manage itself
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'surround.vim'
 Plugin 'tpope/vim-fugitive'
