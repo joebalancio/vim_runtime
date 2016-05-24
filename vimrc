@@ -572,3 +572,9 @@ nmap ]h <Plug>GitGutterNextHunk
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Make sure jsctags is installed: npm i -g jsctags
 nmap tt :Tagbar<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => NERD Commenter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
