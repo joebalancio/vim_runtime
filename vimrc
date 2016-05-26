@@ -578,3 +578,10 @@ nmap tt :Tagbar<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => neocomplete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable neocomplete
+let g:neocomplete#enable_at_startup = 1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
