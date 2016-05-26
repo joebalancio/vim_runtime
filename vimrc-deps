@@ -46,5 +46,6 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'elzr/vim-json'
 Plugin 'scrooloose/nerdcommenter.git'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'haya14busa/incsearch.vim'
 
 call vundle#end()

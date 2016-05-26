@@ -60,7 +60,7 @@ set smartcase
 
 set hlsearch "Highlight search things
 
-set incsearch "Make search act like search in modern browsers
+" set incsearch "Make search act like search in modern browsers
 set nolazyredraw "Don't redraw while executing macros
 
 set magic "Set magic on, for regular expressions
@@ -585,3 +585,22 @@ let g:NERDSpaceDelims = 1
 " Enable neocomplete
 let g:neocomplete#enable_at_startup = 1
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => incsearch.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Basic setup
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" Automatic :nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
