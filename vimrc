@@ -78,6 +78,10 @@ set tm=500
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable "Enable syntax hl
+if has('nvim') 
+  " set termguicolors
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 
 set t_Co=256
 set background=dark
@@ -511,7 +515,9 @@ let g:localvimrc_ask = 0
 " => Mouse
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set mouse=a
-set ttymouse=xterm2
+if !has('nvim')
+  set ttymouse=xterm2
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => tmux

@@ -20,6 +20,15 @@ else
 fi
 ln -s $DIR ~/.vim
 
+# link vim_runtime to neovim
+if [ -L ~/.config/nvim ]
+then
+  unlink ~/.config/nvim
+else
+  rm ~/.config/nvim
+fi
+ln -s $DIR ~/.config/nvim
+
 # clone neobundle
 if [ ! -d $DIR/bundle/Vundle.vim ]
 then
