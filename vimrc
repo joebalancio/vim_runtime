@@ -79,8 +79,8 @@ set tm=500
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable "Enable syntax hl
 if has('nvim') 
-  " set termguicolors
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  set termguicolors
+  " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
 set t_Co=256
@@ -263,6 +263,11 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Temporary workaround for: https://github.com/neovim/neovim/issues/2048
+if has("nvim")
+  map <BS> <C-W>h
+endif
+
 "" Close the current buffer
 map <leader>bd :Bclose<cr>
 
@@ -407,27 +412,29 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 " => JavaScript section
 """""""""""""""""""""""""""""""
 au FileType javascript call JavaScriptFold()
-au FileType javascript setl fen
-au FileType javascript setl nocindent
+" au FileType javascript setl fen
+" au FileType javascript setl nocindent
 
-au FileType javascript imap <c-t> AJS.log();<esc>hi
-au FileType javascript imap <c-a> alert();<esc>hi
+" au FileType javascript imap <c-t> AJS.log();<esc>hi
+" au FileType javascript imap <c-a> alert();<esc>hi
 
-au FileType javascript inoremap <buffer> $r return
-au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
+" au FileType javascript inoremap <buffer> $r return
+" au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
 
 function! JavaScriptFold()
+    " setl foldlevelstart=1
+    syn region foldBraces start=/{/ end=/}/ transparent fold
+    " syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
     setl foldmethod=syntax
-    setl foldlevelstart=1
-    syn region foldBraces start=/{/ end=/}/ transparent fold keepend extend
+    setl foldlevel=99
 
-    function! FoldText()
-        return substitute(getline(v:foldstart), '{.*', '{...}', '')
-    endfunction
-    setl foldtext=FoldText()
+    " function! FoldText()
+        " return substitute(getline(v:foldstart), '{.*', '{...}', '')
+    " endfunction
+    " setl foldtext=FoldText()
 endfunction
 
-au FileType javascript setl nofoldenable
+" au FileType javascript setl nofoldenable
 
 """"""""""""""""""""""""""""""
 " => Vim grep
@@ -461,7 +468,7 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_max_files = 0
 let g:ctrlp_max_depth = 40
 let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_lazy_update = 250
+" let g:ctrlp_lazy_update = 250
 let g:ctrlp_open_multiple_files = 'vjr'
 let g:ctrlp_working_path_mode = 'ra'
 
@@ -610,3 +617,18 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => deoplete
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => neovim / terminal
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('nvim') 
+	tnoremap <C-h> <C-\><C-n><C-w>h
+	tnoremap <C-j> <C-\><C-n><C-w>j
+	tnoremap <C-k> <C-\><C-n><C-w>k
+	tnoremap <C-l> <C-\><C-n><C-w>l
+endif

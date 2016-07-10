@@ -30,14 +30,17 @@ fi
 ln -s $DIR ~/.config/nvim
 
 # clone neobundle
-if [ ! -d $DIR/bundle/Vundle.vim ]
+if [ ! -e "$DIR/autoload/plug.vim" ]
 then
-  git clone https://github.com/VundleVim/Vundle.vim.git $DIR/bundle/Vundle.vim
+  curl -fLo $DIR/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 # run vim
-vim -u $DIR/vimrc-vundle +PluginInstall +qall
-
-$DIR/bundle/YouCompleteMe/install.sh
+if hash nvim 2>/dev/null
+then
+  nvim -u $DIR/vimrc-deps +PlugInstall
+else
+  vim -u $DIR/vimrc-deps +PlugInstall
+fi
 
 echo 'All done!'
