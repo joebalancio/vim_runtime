@@ -30,7 +30,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'JulesWang/css.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'puppetlabs/puppet-syntax-vim'
-" Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'pangloss/vim-javascript'
 Plug 'chriskempson/base16-vim'
