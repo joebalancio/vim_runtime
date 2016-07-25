@@ -38,6 +38,7 @@ Plug 'elzr/vim-json'
 Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
+Plug 'neovim/node-host', { 'do': 'npm install' }
 Plug '~/projects/neovim-iterm2-semantic-history', { 'do': 'npm install' }
 
 call plug#end()
