@@ -85,7 +85,7 @@ endif
 
 set t_Co=256
 set background=dark
-colorscheme base16-default
+colorscheme base16-pop
 set number
 
 set encoding=utf8
