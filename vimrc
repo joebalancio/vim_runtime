@@ -616,6 +616,11 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
+" Fuzzy
+map z/ <Plug>(incsearch-fuzzy-/)
+map z? <Plug>(incsearch-fuzzy-?)
+map zg/ <Plug>(incsearch-fuzzy-stay)
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => neovim / terminal
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
