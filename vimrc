@@ -107,7 +107,7 @@ set noswapfile
 
 "Persistent undo
 try
-  set undodir=~/.vim_runtime/undodir
+  set undodir=~/.vim/undodir
   set undofile
 catch
 endtry
