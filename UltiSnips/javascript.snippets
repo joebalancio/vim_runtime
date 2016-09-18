@@ -1,0 +1,27 @@
+snippet creq "assign a CommonJS-style module to a const"
+const ${0:${1/(.+\/)*(\w+)(-|\b|$)(\..+$)?/\u$2/g}} = require('${1}')
+endsnippet
+
+snippet ex "module.exports"
+module.exports = ${1}
+endsnippet
+
+snippet strict "use strict"
+'use strict'
+endsnippet
+
+snippet pco "P.coroutine"
+P.coroutine(function *${1}(params) {
+	${2}
+})
+endsnippet
+
+snippet test "Create ava test"
+test.serial('${1}', async (t) => {
+	${2}
+})
+endsnippet
+
+snippet testtodo "Create todo ava test"
+test.todo('${1}')
+endsnippet

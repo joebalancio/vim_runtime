@@ -630,3 +630,13 @@ if has('nvim')
 	tnoremap <C-k> <C-\><C-n><C-w>k
 	tnoremap <C-l> <C-\><C-n><C-w>l
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => UltiSnips
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger="<c-o>"
+autocmd FileType javascript UltiSnipsAddFiletypes javascript-node
+autocmd FileType javascript UltiSnipsAddFiletypes javascript.node
+autocmd FileType javascript UltiSnipsAddFiletypes javascript.es6
+let g:UltiSnipsEditSplit = "context"
+let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
