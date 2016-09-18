@@ -508,8 +508,6 @@ set statusline+=%*
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERD Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDTreeMapJumpNextSibling = '<right>'
-let g:NERDTreeMapJumpPrevSibling = '<left>'
 map <leader>\ :NERDTreeToggle<cr>
 map <leader>] :NERDTreeFind<cr>
 
