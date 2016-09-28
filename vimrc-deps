@@ -27,9 +27,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/unite.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'JulesWang/css.vim'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'puppetlabs/puppet-syntax-vim'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'pangloss/vim-javascript'
 Plug 'chriskempson/base16-vim'
 Plug 'elzr/vim-json'
@@ -43,5 +40,10 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'neomake/neomake'
 Plug 'Valloric/ListToggle'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ervandew/supertab'
+" Note: make sure tern is installed globally `npm install -g tern`
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 call plug#end()

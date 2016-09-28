@@ -567,13 +567,6 @@ nmap tt :Tagbar<cr>
 let g:NERDSpaceDelims = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => neocomplete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable neocomplete
-let g:neocomplete#enable_at_startup = 1
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => incsearch.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -610,12 +603,14 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => UltiSnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:UltiSnipsExpandTrigger="<c-o>"
+" Don't use <Tab> for auto completion
+let g:UltiSnipsExpandTrigger="<C-j>"
 autocmd FileType javascript UltiSnipsAddFiletypes javascript-node
 autocmd FileType javascript UltiSnipsAddFiletypes javascript.node
 autocmd FileType javascript UltiSnipsAddFiletypes javascript.es6
 let g:UltiSnipsEditSplit = "context"
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Neomake
@@ -623,3 +618,25 @@ let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
 autocmd! BufWritePost,BufReadPost * Neomake
 map <leader>j :lnext<cr>
 map <leader>k :lprev<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => SuperTab
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use <Tab> for all auto completion
+autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => deoplete.nvim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete',
+  \ 'jspc#omni'
+\]
+set completeopt=longest,menuone
+let g:deoplete#sources = {}
+let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs']
+let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+let g:deoplete#file#enable_buffer_path = 1
