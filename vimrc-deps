@@ -22,7 +22,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'groenewege/vim-less'
 Plug 'vim-coffee-script'
-Plug 'scrooloose/syntastic'
 Plug 'mileszs/ack.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'Shougo/unite.vim'
@@ -42,5 +41,7 @@ Plug 'neovim/node-host', { 'do': 'npm install' }
 Plug '~/projects/neovim-iterm2-semantic-history', { 'do': 'npm install' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'neomake/neomake'
+Plug 'Valloric/ListToggle'
 
 call plug#end()

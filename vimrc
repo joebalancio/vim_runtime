@@ -484,28 +484,6 @@ map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Do :help cope if you are unsure what cope is. It's super useful!
-map <leader>e :Errors<cr>
-map <leader>j :lnext<cr>
-map <leader>k :lprev<cr>
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_javascript_checkers = ['eslint']
-
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Exuberant CTags
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERD Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>\ :NERDTreeToggle<cr>
@@ -640,3 +618,10 @@ autocmd FileType javascript UltiSnipsAddFiletypes javascript.node
 autocmd FileType javascript UltiSnipsAddFiletypes javascript.es6
 let g:UltiSnipsEditSplit = "context"
 let g:UltiSnipsSnippetsDir = "~/.vim/UltiSnips"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Neomake
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd! BufWritePost,BufReadPost * Neomake
+map <leader>j :lnext<cr>
+map <leader>k :lprev<cr>
