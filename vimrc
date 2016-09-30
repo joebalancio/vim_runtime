@@ -590,6 +590,8 @@ map z/ <Plug>(incsearch-fuzzy-/)
 map z? <Plug>(incsearch-fuzzy-?)
 map zg/ <Plug>(incsearch-fuzzy-stay)
 
+highlight IncSearchCursor ctermfg=0 ctermbg=9 guifg=#000000 guibg=#FF0000
+highlight IncSearchOnCursor ctermfg=0 ctermbg=9 guifg=#000000 guibg=#FF0000
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => neovim / terminal
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
