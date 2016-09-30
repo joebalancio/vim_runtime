@@ -642,3 +642,5 @@ let g:deoplete#sources = {}
 let g:deoplete#sources['javascript'] = ['file', 'ultisnips', 'ternjs']
 let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
 let g:deoplete#file#enable_buffer_path = 1
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
