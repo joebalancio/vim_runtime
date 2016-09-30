@@ -74,6 +74,9 @@ set novisualbell
 set t_vb=
 
 set timeoutlen=1000 ttimeoutlen=0
+
+" Based on gitgutter's recommendation
+set updatetime=250
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
