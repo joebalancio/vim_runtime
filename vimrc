@@ -618,6 +618,8 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 autocmd! BufWritePost,BufReadPost * Neomake
 map <leader>j :lnext<cr>
 map <leader>k :lprev<cr>
+map <leader>jj :llast<cr>
+map <leader>kk :lfirst<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => SuperTab
