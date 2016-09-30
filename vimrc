@@ -391,21 +391,6 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{CurDir()}%h\ \ \ Line:\ 
 "Remap VIM 0
 map 0 ^
 
-""""""""""""""""""""""""""""""
-" => Minibuffer plugin
-""""""""""""""""""""""""""""""
-"let g:miniBufExplModSelTarget = 1
-"let g:miniBufExplUseSingleClick = 1
-""let g:miniBufExplMapWindowNavVim = 1
-"let g:miniBufExplVSplit = 30
-"let g:miniBufExplSplitBelow=1
-"
-"autocmd BufRead,BufNew :call UMiniBufExplorer
-"
-"map <leader>u :TMiniBufExplorer<cr>
-
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omni complete functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -417,12 +402,6 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 au FileType javascript call JavaScriptFold()
 " au FileType javascript setl fen
 " au FileType javascript setl nocindent
-
-" au FileType javascript imap <c-t> AJS.log();<esc>hi
-" au FileType javascript imap <c-a> alert();<esc>hi
-
-" au FileType javascript inoremap <buffer> $r return
-" au FileType javascript inoremap <buffer> $f //--- PH ----------------------------------------------<esc>FP2xi
 
 function! JavaScriptFold()
     " setl foldlevelstart=1
@@ -477,14 +456,18 @@ let g:ctrlp_working_path_mode = 'ra'
 
 nmap ff :CtrlPMixed<cr>
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => QuickFix / Location List
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>n :cnext<cr>
+map <leader>p :cprev<cr>
+map <leader>nn :clast<cr>
+map <leader>pp :cfirst<cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Cope
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Do :help cope if you are unsure what cope is. It's super useful!
-map <leader>cc :botright cope<cr>
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+map <leader>j :lnext<cr>
+map <leader>k :lprev<cr>
+map <leader>jj :llast<cr>
+map <leader>kk :lfirst<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERD Tree
@@ -548,20 +531,9 @@ nnoremap <silent> [unite]m :<C-u>Unite -auto-resize -buffer-name=mappings mappin
 nnoremap <silent> [unite]s :<C-u>Unite -quick-match buffer<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim Autoformat
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:formatprg_args_javascript = "-f -"
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim Git Gutter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:gitgutter_max_signs=1000
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Tagbar
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Make sure jsctags is installed: npm i -g jsctags
-nmap tt :Tagbar<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERD Commenter
@@ -621,10 +593,6 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " => Neomake
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd! BufWritePost,BufReadPost * Neomake
-map <leader>j :lnext<cr>
-map <leader>k :lprev<cr>
-map <leader>jj :llast<cr>
-map <leader>kk :lfirst<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => SuperTab
