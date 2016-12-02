@@ -507,7 +507,12 @@ let g:airline#extensions#default#section_truncate_width = {
     \ 'z': 100,
     \ 'warning': 80,
     \ }
+
+let g:airline#extensions#whitespace#enabled = 0
+
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#show_splits = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack
