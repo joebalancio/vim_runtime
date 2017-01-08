@@ -1,5 +1,12 @@
-snippet creq "assign a CommonJS-style module to a const"
+snippet sreq "Start case require"
 const ${0:${1/(.+\/)*(\w+)(-|\b|$)(\..+$)?/\u$2/g}} = require('${1}')
+endsnippet
+
+snippet creq "Camel case require"
+const `!p
+output = ''.join(x for x in t[1].title() if x.isalpha())
+snip.rv = output[:1].lower() + output[1:]
+` = require('${1}')
 endsnippet
 
 snippet ex "module.exports"
@@ -32,4 +39,12 @@ endsnippet
 
 snippet cl "console.log"
 console.log(${1:'${2:value}'})
+endsnippet
+
+snippet param "create param"
+const $1 = params.`!p snip.rv = t[1]`
+endsnippet
+
+snippet bluebird "Require Bluebird as P"
+const P = require('bluebird')
 endsnippet
