@@ -547,32 +547,6 @@ let g:gitgutter_max_signs=1000
 let g:NERDSpaceDelims = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => incsearch.vim
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Basic setup
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-
-" Automatic :nohlsearch
-set hlsearch
-let g:incsearch#auto_nohlsearch = 1
-map n  <Plug>(incsearch-nohl-n)
-map N  <Plug>(incsearch-nohl-N)
-map *  <Plug>(incsearch-nohl-*)
-map #  <Plug>(incsearch-nohl-#)
-map g* <Plug>(incsearch-nohl-g*)
-map g# <Plug>(incsearch-nohl-g#)
-
-" Fuzzy
-map z/ <Plug>(incsearch-fuzzy-/)
-map z? <Plug>(incsearch-fuzzy-?)
-map zg/ <Plug>(incsearch-fuzzy-stay)
-
-highlight IncSearchCursor ctermfg=0 ctermbg=9 guifg=#000000 guibg=#FF0000
-highlight IncSearchOnCursor ctermfg=0 ctermbg=9 guifg=#000000 guibg=#FF0000
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => neovim / terminal
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('nvim') 
